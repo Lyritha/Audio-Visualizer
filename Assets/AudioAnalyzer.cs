@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Linq;
 using System.Numerics;
 using Unity.VisualScripting;
@@ -16,6 +17,7 @@ public class AudioAnalyzer : MonoBehaviour
     // audio source to target for sampling
     private AudioSource source;
 
+    [SerializeField] private float delay = 5f;
     [SerializeField] private AudioChannel audioChannel;
 
     [SerializeField, Tooltip("Tells the script how many frames it should use to average the samples at.")]
@@ -49,6 +51,13 @@ public class AudioAnalyzer : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
         SetValues();
+        StartCoroutine(Wait());
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(delay);
+        source.Play();
     }
 
     private void SetValues()

@@ -1,9 +1,12 @@
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class InstantiateCube : MonoBehaviour
 {
     [SerializeField] AudioAnalyzer audioAnalyzer;
     [SerializeField] GameObject cubePrefab;
+    [SerializeField] float cubeDistance = 10;
+    [SerializeField] float maxHeight = 5;
 
     private GameObject[] sampleCubes;
 
@@ -30,11 +33,12 @@ public class InstantiateCube : MonoBehaviour
             Vector3 forwardDirection = spawnRotation * Vector3.forward;
 
             // Scale the direction to the desired distance
-            Vector3 spawnPoint = forwardDirection * 10;
+            Vector3 spawnPoint = forwardDirection * cubeDistance;
 
 
             GameObject obj = Instantiate(cubePrefab, spawnPoint, spawnRotation);
             obj.name = "SampleCube_" + i;
+            obj.transform.parent = transform;
 
             sampleCubes[i] = obj;
         }
@@ -52,7 +56,9 @@ public class InstantiateCube : MonoBehaviour
 
         for(int i = 0; i < sampleCubes.Length; i++)
         {
-            sampleCubes[i].transform.localScale = new(1f, (audioAnalyzer.FrequencyBands[i] * 1000) + 1, 1f); 
+            float value = audioAnalyzer.FrequencyBands[i] * 1000;
+
+            sampleCubes[i].transform.localScale = new(1f, Mathf.Clamp(value + 1, 0, maxHeight), 1f); 
         }
     }
 }
