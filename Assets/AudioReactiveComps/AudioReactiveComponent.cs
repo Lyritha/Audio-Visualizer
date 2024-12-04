@@ -17,6 +17,7 @@ public abstract class AudioReactiveComponent : MonoBehaviour
 
     // holds the audio data for further processing
     [SerializeField] protected AudioAnalyzer audioAnalyzer;
+    [SerializeField] protected AudioAnalyzer.Channel channel;
     protected float[] audioData = new float[0];
 
 
@@ -46,7 +47,7 @@ public abstract class AudioReactiveComponent : MonoBehaviour
 
     protected void ProcessRawSamples()
     {
-        float[] samples = audioAnalyzer.GetSample(AudioAnalyzer.Channel.left);
+        float[] samples = audioAnalyzer.GetSample(channel);
 
         int scaledLength = (int)(samples.Length / 100 * dataResolution);
 
@@ -67,7 +68,7 @@ public abstract class AudioReactiveComponent : MonoBehaviour
 
     protected void ProcessRawFrequencyBands()
     {
-        float[] bands = audioAnalyzer.GetBands(AudioAnalyzer.Channel.left);
+        float[] bands = audioAnalyzer.GetBands(channel);
 
         // re-scale the array if it doesn't match with the incoming data
         if (audioData.Length != bands.Length)
