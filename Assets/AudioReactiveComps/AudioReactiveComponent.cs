@@ -12,7 +12,7 @@ public abstract class AudioReactiveComponent : MonoBehaviour
 
     // tells the script what part of the audio data to target
     [SerializeField, HideInInspector] protected DataTarget targetData;
-    [SerializeField, HideInInspector, Range(0,100)] protected int dataResolution = 5;
+    [SerializeField, HideInInspector, Range(1,100)] protected int dataResolution = 5;
 
 
     // holds the audio data for further processing
@@ -21,9 +21,8 @@ public abstract class AudioReactiveComponent : MonoBehaviour
     protected float[] audioData = new float[0];
 
 
-
     // Update is called once per frame
-    protected void Update()
+    protected void FixedUpdate()
     {
         ProcessAudioData();
         AudioReaction();

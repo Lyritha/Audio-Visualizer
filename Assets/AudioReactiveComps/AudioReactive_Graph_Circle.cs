@@ -7,7 +7,6 @@ public class AudioReactive_Graph_Circle : AudioReactiveComponent
     [SerializeField] private Vector3 graphObjectScale = Vector3.one;
     [SerializeField] private float cubeDistance = 10;
     [SerializeField] private float maxHeight = 5;
-    [SerializeField] private float rotationOffset = 0;
     [SerializeField] private float reactionStrength = 1000;
 
     private GameObject[] graphObjects;
@@ -42,7 +41,7 @@ public class AudioReactive_Graph_Circle : AudioReactiveComponent
         for (int i = 0; i < graphObjects.Length; i++)
         {
             // Create a rotation for this spawn point (rotating around the Y-axis)
-            Quaternion spawnRotation = Quaternion.Euler(0, (rotStep * i) + rotationOffset, 0);
+            Quaternion spawnRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + (rotStep * i), transform.rotation.z);
 
             // Rotate the forward vector (Z direction) by the rotation
             Vector3 forwardDirection = spawnRotation * Vector3.forward;
