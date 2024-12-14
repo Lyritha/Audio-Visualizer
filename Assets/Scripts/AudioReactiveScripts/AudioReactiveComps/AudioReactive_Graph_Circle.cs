@@ -1,13 +1,18 @@
+using UnityEditor;
 using UnityEngine;
 
 public class AudioReactive_Graph_Circle : AudioReactiveComponent
 {
-    [Header("Circle Data")]
-    [SerializeField] private GameObject graphObjectPrefab;
+    [Header("Visuals")]
+    [SerializeField] private Material material;
+    [SerializeField] private PrimitiveType shape;
+
+    [Header("Reactive Parameters")]
     [SerializeField] private Vector3 graphObjectScale = Vector3.one;
-    [SerializeField] private float cubeDistance = 10;
+    [SerializeField] private float radius = 10;
     [SerializeField] private float maxHeight = 5;
     [SerializeField] private float reactionStrength = 1000;
+
 
     private GameObject[] graphObjects;
 
@@ -21,6 +26,7 @@ public class AudioReactive_Graph_Circle : AudioReactiveComponent
             GenerateCubes();
         }
 
+        // apply the effect
         for (int i = 0; i < graphObjects.Length; i++)
         {
             float value = audioData[i] * reactionStrength;
@@ -43,18 +49,41 @@ public class AudioReactive_Graph_Circle : AudioReactiveComponent
             // Create a rotation for this spawn point (rotating around the Y-axis)
             Quaternion spawnRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + (rotStep * i), transform.rotation.z);
 
-            // Rotate the forward vector (Z direction) by the rotation
-            Vector3 forwardDirection = spawnRotation * Vector3.forward;
-
             // Scale the direction to the desired distance
-            Vector3 spawnPoint = forwardDirection * cubeDistance;
+            Vector3 spawnPoint = spawnRotation * Vector3.forward * radius;
 
-
-            GameObject obj = Instantiate(graphObjectPrefab, spawnPoint, spawnRotation);
-            obj.name = "SampleCube_" + i;
-            obj.transform.parent = transform;
-
-            graphObjects[i] = obj;
+            graphObjects[i] = CreateObject(i, spawnPoint, spawnRotation);
         }
     }
+
+    private GameObject CreateObject(int index, Vector3 pos, Quaternion rot)
+    {
+        // create primitive cube
+        GameObject obj = GameObject.CreatePrimitive(shape);
+
+        // set transform information
+        obj.transform.SetPositionAndRotation(pos, rot);
+        obj.transform.parent = transform;
+
+        // assign the material
+        obj.GetComponent<Renderer>().material = material;
+
+        // remove collider, as it won't be needed
+        Destroy(obj.GetComponent<Collider>());
+
+        // give it a name
+        obj.name = "SampleCube_" + index;
+
+        //return the cube
+        return obj;
+    }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        // Create a slider for adjusting the radius
+        Handles.color = material.GetColor("_EmissionColor");
+        Handles.DrawWireArc(transform.position, transform.up, transform.forward, 360, radius);
+    }
+#endif
 }

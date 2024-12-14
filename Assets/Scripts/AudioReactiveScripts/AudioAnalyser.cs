@@ -1,10 +1,8 @@
 using System;
 using System.Linq;
-using Unity.Collections;
-using Unity.Jobs;
 using UnityEngine;
 
-public class AudioAnalyzer : MonoBehaviour
+public class AudioAnalyser : MonoBehaviour
 {
     public enum Channel
     {
@@ -20,9 +18,11 @@ public class AudioAnalyzer : MonoBehaviour
     [SerializeField, Tooltip("Tells the script how many samples a band needs at minimum, falls back on sample count / band count."), Range(0, 500)]
     private int minimumSampleCount = 1;
 
-    [SerializeField, Range(64, 8192)] public int SampleCount { get; private set; } = 2048;
-    [SerializeField, Range(2, 16)] public int BandWidth { get; private set; } = 8;
+    [SerializeField, Range(64, 8192)] private int sampleCount = 2048;
+    [SerializeField, Range(2, 16)] private int bandWidth = 8;
 
+    public int SampleCount => sampleCount; // Public getter
+    public int BandWidth => bandWidth;     // Public getter
 
 
     // "output" variables, where the data is stored
@@ -38,11 +38,11 @@ public class AudioAnalyzer : MonoBehaviour
     private void OnValidate()
     {
         // clamp sample count to power of 2
-        SampleCount = Mathf.Clamp(Mathf.ClosestPowerOfTwo(SampleCount), 64, 8192);
+        sampleCount = Mathf.Clamp(Mathf.ClosestPowerOfTwo(sampleCount), 64, 8192);
 
         // clamp frequency band to even numbers, to make sample assignment easier
-        BandWidth += BandWidth % 2 != 0 ? 1 : 0;
-        BandWidth = Mathf.Clamp(BandWidth, 2, 16);
+        bandWidth += bandWidth % 2 != 0 ? 1 : 0;
+        bandWidth = Mathf.Clamp(bandWidth, 2, 16);
     }
 
 
@@ -201,36 +201,11 @@ public class AudioAnalyzer : MonoBehaviour
         };
     }
 
-
-
     // utility functions
 
     private long Remap(long value, long fromMin, long fromMax, long toMin, long toMax)
     {
         if (fromMax == fromMin) return toMin; // Avoid division by zero
         return toMin + (long)((value - fromMin) * (double)(toMax - toMin) / (fromMax - fromMin));
-    }
-
-
-
-    public struct AverageBandsJob : IJobParallelFor
-    {
-        [ReadOnly] public NativeArray<float> inputSamples;
-        [ReadOnly] public NativeArray<long> bandSampleCount;
-        public NativeArray<float> result;
-
-        public void Execute(int index)
-        {
-            long samplesInBand = bandSampleCount[index];
-            if (samplesInBand <= 0) return;
-
-            float bandTotal = 0;
-            for (int j = 0; j < samplesInBand; j++)
-            {
-                bandTotal += inputSamples[(int)(index * samplesInBand + j)];
-            }
-
-            result[index] = bandTotal / samplesInBand;
-        }
     }
 }
