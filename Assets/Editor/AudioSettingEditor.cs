@@ -5,14 +5,15 @@ using UnityEngine;
 public class AudioSettingsEditor : Editor
 {
     // Reference to the target component
-    private SerializedProperty targetDataProp;
-    private SerializedProperty sampleResolutionProp;
-    private SerializedProperty sampleRangeProp;
+    protected SerializedProperty targetDataProp;
+
+    protected SerializedProperty sampleResolutionProp;
+    protected SerializedProperty sampleRangeProp;
 
     // Reference to the actual script instance
-    private AudioReactiveComponent reactiveComponent;
+    protected AudioReactiveComponent reactiveComponent;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         // Cache references to the properties using the exact field names
         targetDataProp = serializedObject.FindProperty("targetData");
@@ -50,7 +51,7 @@ public class AudioSettingsEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 
-    private void MinMaxSlider()
+    protected virtual void MinMaxSlider()
     {
         // Add a slider for sampleRange
         Vector2Int sampleRange = sampleRangeProp.vector2IntValue; // Get the current value

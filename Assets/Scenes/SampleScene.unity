@@ -463,13 +463,13 @@ MonoBehaviour:
   sampleRange: {x: 0, y: 8192}
   audioAnalyzer: {fileID: 1167789059}
   audioChannel: 0
-  targetTransform: 1
-  targetBands: {x: 0, y: 0, z: 0}
+  targets: {x: 0, y: 0, z: 0}
   strength: {x: 20, y: 100, z: 20}
+  targetTransform: 1
+  defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 400}
   rangeY: {x: 0, y: 400}
   rangeZ: {x: 0, y: 400}
-  defaultScale: {x: 1, y: 1, z: 1}
 --- !u!1 &531381538
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,13 +521,13 @@ MonoBehaviour:
   sampleRange: {x: 0, y: 0}
   audioAnalyzer: {fileID: 1167789059}
   audioChannel: 0
-  targetTransform: 1
-  targetBands: {x: 1, y: 1, z: 1}
+  targets: {x: 0, y: 0, z: 0}
   strength: {x: 0, y: 40, z: 0}
+  targetTransform: 1
+  defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 40}
   rangeY: {x: 0, y: 40}
   rangeZ: {x: 0, y: 40}
-  defaultScale: {x: 1, y: 1, z: 1}
 --- !u!1 &591051060
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,13 +693,13 @@ MonoBehaviour:
   sampleRange: {x: 0, y: 0}
   audioAnalyzer: {fileID: 1167789059}
   audioChannel: 0
-  targetTransform: 1
-  targetBands: {x: 1, y: 1, z: 1}
+  targets: {x: 0, y: 0, z: 0}
   strength: {x: 20, y: 20, z: 20}
+  targetTransform: 1
+  defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 20}
   rangeY: {x: 0, y: 20}
   rangeZ: {x: 0, y: 20}
-  defaultScale: {x: 1, y: 1, z: 1}
 --- !u!114 &696618856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -789,13 +789,13 @@ MonoBehaviour:
   sampleRange: {x: 0, y: 0}
   audioAnalyzer: {fileID: 1167789059}
   audioChannel: 1
-  targetTransform: 1
-  targetBands: {x: 1, y: 1, z: 1}
+  targets: {x: 0, y: 0, z: 0}
   strength: {x: 0, y: 40, z: 0}
+  targetTransform: 1
+  defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 100}
   rangeY: {x: 0, y: 100}
   rangeZ: {x: 0, y: 100}
-  defaultScale: {x: 1, y: 1, z: 1}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,17 +1253,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetData: 1
-  sampleResolution: 5
-  sampleRange: {x: 0, y: 0}
+  sampleResolution: 100
+  sampleRange: {x: 0, y: 100}
   audioAnalyzer: {fileID: 1167789059}
-  audioChannel: 2
-  targetTransform: 2
-  targetBands: {x: 0, y: 0, z: 0}
+  audioChannel: 1
+  targets: {x: 1, y: 1, z: 1}
   strength: {x: 40, y: 40, z: 40}
-  rangeX: {x: 0, y: 5}
-  rangeY: {x: 0, y: 5}
-  rangeZ: {x: 0, y: 5}
+  targetTransform: 2
   defaultScale: {x: 5, y: 5, z: 5}
+  rangeX: {x: 0, y: 10}
+  rangeY: {x: 0, y: 10}
+  rangeZ: {x: 0, y: 10}
 --- !u!1 &1306228073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,13 +1488,13 @@ MonoBehaviour:
   sampleRange: {x: 0, y: 0}
   audioAnalyzer: {fileID: 1167789059}
   audioChannel: 0
-  targetTransform: 2
-  targetBands: {x: 1, y: 1, z: 1}
+  targets: {x: 0, y: 0, z: 0}
   strength: {x: 40, y: 40, z: 40}
+  targetTransform: 2
+  defaultScale: {x: 1.5, y: 1.5, z: 1.5}
   rangeX: {x: 0, y: 5}
   rangeY: {x: 0, y: 5}
   rangeZ: {x: 0, y: 5}
-  defaultScale: {x: 1.5, y: 1.5, z: 1.5}
 --- !u!1 &1377231477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,13 +1599,13 @@ MonoBehaviour:
   sampleRange: {x: 0, y: 0}
   audioAnalyzer: {fileID: 1167789059}
   audioChannel: 2
-  targetTransform: 2
-  targetBands: {x: 0, y: 0, z: 0}
+  targets: {x: 0, y: 0, z: 0}
   strength: {x: 40, y: 40, z: 40}
+  targetTransform: 2
+  defaultScale: {x: 2, y: 2, z: 2}
   rangeX: {x: 0, y: 5}
   rangeY: {x: 0, y: 5}
   rangeZ: {x: 0, y: 5}
-  defaultScale: {x: 2, y: 2, z: 2}
 --- !u!1 &1378804561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,13 +1710,13 @@ MonoBehaviour:
   sampleRange: {x: 0, y: 0}
   audioAnalyzer: {fileID: 1167789059}
   audioChannel: 1
-  targetTransform: 2
-  targetBands: {x: 0, y: 0, z: 0}
+  targets: {x: 0, y: 0, z: 0}
   strength: {x: 40, y: 40, z: 40}
+  targetTransform: 2
+  defaultScale: {x: 3, y: 3, z: 3}
   rangeX: {x: 0, y: 5}
   rangeY: {x: 0, y: 5}
   rangeZ: {x: 0, y: 5}
-  defaultScale: {x: 3, y: 3, z: 3}
 --- !u!1001 &1491095243
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1829,13 +1829,13 @@ MonoBehaviour:
   sampleRange: {x: 0, y: 0}
   audioAnalyzer: {fileID: 1167789059}
   audioChannel: 1
-  targetTransform: 1
-  targetBands: {x: 1, y: 1, z: 1}
+  targets: {x: 0, y: 0, z: 0}
   strength: {x: 20, y: 20, z: 20}
+  targetTransform: 1
+  defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 20}
   rangeY: {x: 0, y: 20}
   rangeZ: {x: 0, y: 20}
-  defaultScale: {x: 1, y: 1, z: 1}
 --- !u!114 &1537873538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1925,13 +1925,13 @@ MonoBehaviour:
   sampleRange: {x: 0, y: 0}
   audioAnalyzer: {fileID: 1167789059}
   audioChannel: 2
-  targetTransform: 1
-  targetBands: {x: 1, y: 1, z: 1}
+  targets: {x: 0, y: 0, z: 0}
   strength: {x: 0, y: 40, z: 0}
+  targetTransform: 1
+  defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 100}
   rangeY: {x: 0, y: 100}
   rangeZ: {x: 0, y: 100}
-  defaultScale: {x: 1, y: 1, z: 1}
 --- !u!1 &1657531136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2006,13 +2006,13 @@ MonoBehaviour:
   sampleRange: {x: 0, y: 0}
   audioAnalyzer: {fileID: 1167789059}
   audioChannel: 2
-  targetTransform: 1
-  targetBands: {x: 0, y: 0, z: 0}
+  targets: {x: 0, y: 0, z: 0}
   strength: {x: 20, y: 100, z: 20}
+  targetTransform: 1
+  defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 100}
   rangeY: {x: 0, y: 100}
   rangeZ: {x: 0, y: 100}
-  defaultScale: {x: 1, y: 1, z: 1}
 --- !u!1 &1759769139
 GameObject:
   m_ObjectHideFlags: 0
@@ -2087,13 +2087,13 @@ MonoBehaviour:
   sampleRange: {x: 0, y: 0}
   audioAnalyzer: {fileID: 1167789059}
   audioChannel: 1
-  targetTransform: 1
-  targetBands: {x: 0, y: 0, z: 0}
+  targets: {x: 0, y: 0, z: 0}
   strength: {x: 20, y: 100, z: 20}
+  targetTransform: 1
+  defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 100}
   rangeY: {x: 0, y: 100}
   rangeZ: {x: 0, y: 100}
-  defaultScale: {x: 1, y: 1, z: 1}
 --- !u!1 &1846840274
 GameObject:
   m_ObjectHideFlags: 0
@@ -2129,13 +2129,13 @@ MonoBehaviour:
   sampleRange: {x: 0, y: 0}
   audioAnalyzer: {fileID: 1167789059}
   audioChannel: 2
-  targetTransform: 1
-  targetBands: {x: 1, y: 1, z: 1}
+  targets: {x: 0, y: 0, z: 0}
   strength: {x: 20, y: 20, z: 20}
+  targetTransform: 1
+  defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 20}
   rangeY: {x: 0, y: 20}
   rangeZ: {x: 0, y: 20}
-  defaultScale: {x: 1, y: 1, z: 1}
 --- !u!114 &1846840276
 MonoBehaviour:
   m_ObjectHideFlags: 0
