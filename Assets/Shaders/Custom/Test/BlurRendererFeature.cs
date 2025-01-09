@@ -36,7 +36,7 @@ public class BlurRendererFeature : ScriptableRendererFeature
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
         // if the render pass is not there, skip
-        if (blurRenderPass == null) return;
+        if (blurRenderPass == null || material == null) return;
 
         // trigger the rendering of the pass, making sure to only target the game camera
         if (renderingData.cameraData.cameraType == CameraType.Game) renderer.EnqueuePass(blurRenderPass);

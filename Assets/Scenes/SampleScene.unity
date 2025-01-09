@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -256,6 +257,20 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76083e5ce0637414e9ff4d847176daec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWidth: 1080
+  targetHeight: 720
 --- !u!1 &361031747
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,7 +374,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 4.547149, y: 1.2125733, z: 0, w: 1}
+      - m_Value: {x: 0.5497398, y: 0, z: 3.9999995, w: 1}
         m_Name: Color
         m_Overridden: 1
     m_Uint:
@@ -427,7 +442,7 @@ MonoBehaviour:
   sampleRange: {x: 0, y: 500}
   audioAnalyzer: {fileID: 1167789059}
   audioChannel: 0
-  material: {fileID: 2100000, guid: c256850d0eea59840a639508095e6562, type: 2}
+  material: {fileID: 2100000, guid: 18ee181dd82d2f14a91dab7c215f5634, type: 2}
   shape: 3
   graphObjectScale: {x: 0.2, y: 0.2, z: 0.2}
   radius: 7
@@ -451,7 +466,7 @@ MonoBehaviour:
   audioAnalyzer: {fileID: 1167789059}
   audioChannel: 0
   targets: {x: 0, y: 0, z: 0}
-  strength: {x: 20, y: 200, z: 20}
+  strength: {x: 20, y: 100, z: 20}
   targetTransform: 1
   defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 400}
@@ -542,8 +557,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 71e6ba3f2c9b79a498cb6f3ce5f26ad2, type: 3}
-  m_Resource: {fileID: 8300000, guid: 71e6ba3f2c9b79a498cb6f3ce5f26ad2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c4de63d6eb6514949906ba6a0bee6457, type: 3}
+  m_Resource: {fileID: 8300000, guid: c4de63d6eb6514949906ba6a0bee6457, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -662,7 +677,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &696618855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -935,7 +950,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 0.5497398, y: 0, z: 3.9999995, w: 1}
+      - m_Value: {x: 3.9999995, y: 0.24609046, z: 0, w: 1}
         m_Name: Color
         m_Overridden: 1
     m_Uint:
@@ -1428,7 +1443,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c256850d0eea59840a639508095e6562, type: 2}
+  - {fileID: 2100000, guid: 18ee181dd82d2f14a91dab7c215f5634, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1539,7 +1554,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 18ee181dd82d2f14a91dab7c215f5634, type: 2}
+  - {fileID: 2100000, guid: b5432de3747bf514d884556323d7bcc6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1802,7 +1817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1537873537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1974,7 +1989,7 @@ MonoBehaviour:
   sampleRange: {x: 0, y: 500}
   audioAnalyzer: {fileID: 1167789059}
   audioChannel: 2
-  material: {fileID: 2100000, guid: 18ee181dd82d2f14a91dab7c215f5634, type: 2}
+  material: {fileID: 2100000, guid: b5432de3747bf514d884556323d7bcc6, type: 2}
   shape: 3
   graphObjectScale: {x: 0.2, y: 0.2, z: 0.2}
   radius: 17
@@ -1998,7 +2013,7 @@ MonoBehaviour:
   audioAnalyzer: {fileID: 1167789059}
   audioChannel: 2
   targets: {x: 0, y: 0, z: 0}
-  strength: {x: 20, y: 200, z: 20}
+  strength: {x: 20, y: 100, z: 20}
   targetTransform: 1
   defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 100}
@@ -2079,7 +2094,7 @@ MonoBehaviour:
   audioAnalyzer: {fileID: 1167789059}
   audioChannel: 1
   targets: {x: 0, y: 0, z: 0}
-  strength: {x: 20, y: 200, z: 20}
+  strength: {x: 20, y: 100, z: 20}
   targetTransform: 1
   defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 100}
@@ -2102,7 +2117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1846840275
 MonoBehaviour:
   m_ObjectHideFlags: 0
