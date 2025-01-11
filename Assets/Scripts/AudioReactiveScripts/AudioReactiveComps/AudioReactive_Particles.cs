@@ -25,6 +25,8 @@ public class AudioReactive_Particles : AudioReactiveComponent
 
     protected override void OnValidate()
     {
+        if (audioAnalyzer == null) audioAnalyzer = FindFirstObjectByType<AudioAnalyser>();
+
         for (int i = 0; i < parameterDrivers.Length; i++) 
         {
             parameterDrivers[i].targetBand = Math.Clamp(parameterDrivers[i].targetBand, 0, audioAnalyzer.BandWidth);

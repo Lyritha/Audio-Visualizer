@@ -1,7 +1,10 @@
+using Assets.Scripts.Audio;
 using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class AudioAnalyser : MonoBehaviour
 {
     public enum Channel
@@ -10,16 +13,27 @@ public class AudioAnalyser : MonoBehaviour
         right,
         stereo
     }
+    public enum AudioOrigin
+    {
+        audioSource,
+        desktop
+    }
 
-    // audio source to target for sampling
-    [SerializeField] private AudioSource source;
 
+
+    // audio to target for sampling
+    [SerializeField] AudioOrigin audioOrigin;
+
+    private RealtimeAudio realtimeAudio;
+    private AudioSource sourceAudio;
 
     [SerializeField, Tooltip("Tells the script how many samples a band needs at minimum, falls back on sample count / band count."), Range(0, 500)]
     private int minimumSampleCount = 1;
 
     [SerializeField, Range(64, 8192)] private int sampleCount = 2048;
     [SerializeField, Range(2, 16)] private int bandWidth = 8;
+
+    [SerializeField] private float delayTimer = 0;
 
     public int SampleCount => sampleCount; // Public getter
     public int BandWidth => bandWidth;     // Public getter
@@ -34,6 +48,9 @@ public class AudioAnalyser : MonoBehaviour
     private float[] leftSamples;
     private float[] rightSamples;
 
+    // desktop samples, realtime audio outputs into this
+    private float[] desktopSamples;
+
     //enforce values in the inspector
     private void OnValidate()
     {
@@ -45,11 +62,23 @@ public class AudioAnalyser : MonoBehaviour
         bandWidth = Mathf.Clamp(bandWidth, 2, 16);
     }
 
+    private IEnumerator AudioSourceTimer()
+    {
+        yield return new WaitForSeconds(delayTimer);
 
+        sourceAudio.Play();
+
+        yield return null;
+    }
 
     // setup the sampler
     private void Awake()
     {
+        sourceAudio = GetComponent<AudioSource>();
+
+        // start audio source with a delay only if audio source is the target
+        if (audioOrigin == AudioOrigin.audioSource) StartCoroutine(AudioSourceTimer());
+
         stereoBands = new float[BandWidth];
         leftBands = new float[BandWidth];
         rightBands = new float[BandWidth];
@@ -57,7 +86,16 @@ public class AudioAnalyser : MonoBehaviour
         stereoSamples = new float[SampleCount];
         leftSamples = new float[SampleCount];
         rightSamples = new float[SampleCount];
+
+        desktopSamples = new float[sampleCount];
+
+        // Setup loopback audio and start listening
+        realtimeAudio = new RealtimeAudio(sampleCount, ScalingStrategy.Sqrt, (spectrumData) =>
+        { desktopSamples = spectrumData; });
+
+        realtimeAudio.StartListen();
     }
+
     private void Update()
     {
         // get the data
@@ -66,7 +104,6 @@ public class AudioAnalyser : MonoBehaviour
         // generate the bands
         leftBands = GenerateFrequencyBands(leftBands, leftSamples);
         rightBands = GenerateFrequencyBands(rightBands, rightSamples);
-
 
         // re-scale the frequency bands if it no longer matches up
         if (stereoBands.Length != BandWidth) stereoBands = new float[BandWidth];
@@ -90,13 +127,21 @@ public class AudioAnalyser : MonoBehaviour
             stereoSamples = new float[SampleCount];
         }
 
-        // get spectrum data for both channels
-        source.GetSpectrumData(leftSamples, 0, FFTWindow.Blackman);
-        source.GetSpectrumData(rightSamples, 1, FFTWindow.Blackman);
+        if (audioOrigin == AudioOrigin.desktop)
+        {
+            leftSamples = desktopSamples;
+            rightSamples = desktopSamples;
+            stereoSamples = desktopSamples;
+        }
+        else
+        {
+            sourceAudio.GetSpectrumData(leftSamples, 0, FFTWindow.Blackman);
+            sourceAudio.GetSpectrumData(rightSamples, 1, FFTWindow.Blackman);
 
-        // generate stereo samples from other bands, way cheaper
-        for (int i = 0; i < SampleCount; i++)
-            stereoSamples[i] = (leftSamples[i] + rightSamples[i]) * 0.5f;
+            // generate stereo samples from other bands, way cheaper
+            for (int i = 0; i < SampleCount; i++)
+                stereoSamples[i] = (leftSamples[i] + rightSamples[i]) * 0.5f;
+        }
     }
 
 
@@ -175,7 +220,10 @@ public class AudioAnalyser : MonoBehaviour
         return bands;
     }
 
-
+    public void OnApplicationQuit()
+    {
+        realtimeAudio.StopListen();
+    }
 
     // helper functions
 

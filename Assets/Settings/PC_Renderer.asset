@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2103992895117584805
+--- !u!114 &-823283538714779011
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,32 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f187b1d4ddb9da243830bf8362281f9a, type: 3}
-  m_Name: PosturizeRendererFeature
+  m_Script: {fileID: 11500000, guid: 4e93d0d7ead21e04190a0b81b2e44b15, type: 3}
+  m_Name: PixelateRenderFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  settings:
-    Steps: 2
-  shader: {fileID: 4800000, guid: cbd21156823a2ea4085c5c513b2a3aaf, type: 3}
   renderPassEvent: 600
---- !u!114 &-734980940828285050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 158dcb8dcfb3d50448accc2d9e43d569, type: 3}
-  m_Name: BlurRendererFeature
-  m_EditorClassIdentifier: 
-  m_Active: 1
-  settings:
-    horizontalBlur: 0
-    verticalBlur: 0
-  shader: {fileID: 4800000, guid: a9c6f59b288157f4dbf6fa1bb9cafb67, type: 3}
-  renderPassEvent: 230
+  material: {fileID: 2100000, guid: c3634072c1b7f014484eee9555cf0107, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,9 +40,9 @@ MonoBehaviour:
     probeSamplingDebugTexture: {fileID: 2800000, guid: 24ec0e140fb444a44ab96ee80844e18e, type: 3}
     probeVolumeBlendStatesCS: {fileID: 7200000, guid: b9a23f869c4fd45f19c5ada54dd82176, type: 3}
   m_RendererFeatures:
-  - {fileID: -734980940828285050}
-  - {fileID: -2103992895117584805}
-  m_RendererFeatureMap: 86673f79bad2ccf55b1692fc9b1dcde2
+  - {fileID: 6591069395668462577}
+  - {fileID: -823283538714779011}
+  m_RendererFeatureMap: f16bc4c2b12e785b7da27ac5fb1b93f4
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
@@ -88,3 +68,18 @@ MonoBehaviour:
   m_DepthTextureFormat: 0
   m_AccurateGbufferNormals: 0
   m_IntermediateTextureMode: 0
+--- !u!114 &6591069395668462577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f187b1d4ddb9da243830bf8362281f9a, type: 3}
+  m_Name: PosturizeRendererFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  renderPassEvent: 600
+  material: {fileID: 2100000, guid: 47b160beee1afcf4a9e6be9fc6d6b1b3, type: 2}

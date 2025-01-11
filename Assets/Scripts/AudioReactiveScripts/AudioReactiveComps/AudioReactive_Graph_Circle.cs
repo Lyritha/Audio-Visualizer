@@ -16,6 +16,12 @@ public class AudioReactive_Graph_Circle : AudioReactiveComponent
 
     private GameObject[] graphObjects;
 
+    protected override void OnValidate()
+    {
+        if (audioAnalyzer == null) audioAnalyzer = FindFirstObjectByType<AudioAnalyser>();
+        base.OnValidate();
+    }
+
     // put any audio reactive effects in this, no need to worry about execution order
     protected override void AudioReaction()
     {
@@ -30,7 +36,7 @@ public class AudioReactive_Graph_Circle : AudioReactiveComponent
         for (int i = 0; i < graphObjects.Length; i++)
         {
             float value = audioData[i] * reactionStrength;
-            graphObjects[i].transform.localScale = graphObjectScale + (Vector3.up * Mathf.Clamp(value, 0, maxHeight));
+            graphObjects[i].transform.localScale = graphObjectScale + (Vector3.forward * Mathf.Clamp(value, 0, maxHeight));
         }
     }
 
@@ -47,12 +53,18 @@ public class AudioReactive_Graph_Circle : AudioReactiveComponent
         for (int i = 0; i < graphObjects.Length; i++)
         {
             // Create a rotation for this spawn point (rotating around the Y-axis)
-            Quaternion spawnRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + (rotStep * i), transform.rotation.z);
+            Quaternion spawnRotation = Quaternion.Euler(0, transform.eulerAngles.y + (rotStep * i), 0);
 
-            // Scale the direction to the desired distance
-            Vector3 spawnPoint = spawnRotation * Vector3.forward * radius;
+            // Scale the direction to the desired distance (local space)
+            Vector3 localSpawnPoint = spawnRotation * Vector3.forward * radius;
 
-            graphObjects[i] = CreateObject(i, spawnPoint, spawnRotation);
+            // Convert local spawn point to world space
+            Vector3 spawnPoint = transform.position + transform.rotation * localSpawnPoint;
+
+            // Combine the spawn rotation with the transform's rotation to get the final world rotation
+            Quaternion finalRotation = transform.rotation * spawnRotation;
+
+            graphObjects[i] = CreateObject(i, spawnPoint, finalRotation);
         }
     }
 

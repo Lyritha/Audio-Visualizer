@@ -206,13 +206,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24446127, y: 0, z: 0, w: 0.9696591}
-  m_LocalPosition: {x: 0, y: 13.8, z: -28.5}
+  m_LocalRotation: {x: 0.23242913, y: -0, z: -0, w: 0.9726134}
+  m_LocalPosition: {x: 0, y: 11, z: -22.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 28.3, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 26.88, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,8 +269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76083e5ce0637414e9ff4d847176daec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetWidth: 1080
-  targetHeight: 720
 --- !u!1 &361031747
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,16 +436,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetData: 0
-  sampleResolution: 50
-  sampleRange: {x: 0, y: 500}
-  audioAnalyzer: {fileID: 1167789059}
+  sampleResolution: 2
+  sampleRange: {x: 0, y: 8192}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 0
   material: {fileID: 2100000, guid: 18ee181dd82d2f14a91dab7c215f5634, type: 2}
   shape: 3
-  graphObjectScale: {x: 0.2, y: 0.2, z: 0.2}
+  graphObjectScale: {x: 0.3, y: 0.2, z: 0.2}
   radius: 7
   maxHeight: 10
-  reactionStrength: 100
+  reactionStrength: 1
 --- !u!114 &528576058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,10 +461,10 @@ MonoBehaviour:
   targetData: 1
   sampleResolution: 5
   sampleRange: {x: 0, y: 8192}
-  audioAnalyzer: {fileID: 1167789059}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 0
   targets: {x: 0, y: 0, z: 0}
-  strength: {x: 20, y: 100, z: 20}
+  strength: {x: 0.25, y: 0.5, z: 0.25}
   targetTransform: 1
   defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 400}
@@ -521,10 +519,10 @@ MonoBehaviour:
   targetData: 1
   sampleResolution: 5
   sampleRange: {x: 0, y: 0}
-  audioAnalyzer: {fileID: 1167789059}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 0
   targets: {x: 0, y: 0, z: 0}
-  strength: {x: 0, y: 40, z: 0}
+  strength: {x: 0, y: 1, z: 0}
   targetTransform: 1
   defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 40}
@@ -539,6 +537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 591051063}
+  - component: {fileID: 591051064}
   - component: {fileID: 591051062}
   m_Layer: 0
   m_Name: Audio
@@ -557,9 +556,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c4de63d6eb6514949906ba6a0bee6457, type: 3}
-  m_Resource: {fileID: 8300000, guid: c4de63d6eb6514949906ba6a0bee6457, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 130220871b6d52541b63cc87e8dd40c1, type: 3}
+  m_Resource: {fileID: 8300000, guid: 130220871b6d52541b63cc87e8dd40c1, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -656,10 +655,25 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1167789058}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &591051064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591051060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67ac83b860fabd44b14edbf2a146040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioOrigin: 1
+  minimumSampleCount: 50
+  sampleCount: 8192
+  bandWidth: 8
 --- !u!1 &696618854
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,10 +707,10 @@ MonoBehaviour:
   targetData: 1
   sampleResolution: 5
   sampleRange: {x: 0, y: 0}
-  audioAnalyzer: {fileID: 1167789059}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 0
   targets: {x: 0, y: 0, z: 0}
-  strength: {x: 20, y: 20, z: 20}
+  strength: {x: 0.05, y: 0.1, z: 0.05}
   targetTransform: 1
   defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 20}
@@ -715,16 +729,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetData: 0
-  sampleResolution: 60
-  sampleRange: {x: 0, y: 400}
-  audioAnalyzer: {fileID: 1167789059}
+  sampleResolution: 1
+  sampleRange: {x: 0, y: 8192}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 2
   material: {fileID: 2100000, guid: 5289d9fbf93d2b444aecd5cf09e8c375, type: 2}
   shape: 3
-  graphObjectScale: {x: 0.2, y: 0.2, z: 0.2}
+  graphObjectScale: {x: 2, y: 0.1, z: 0.1}
   radius: 40
   maxHeight: 10
-  reactionStrength: 100
+  reactionStrength: 1
 --- !u!4 &696618857
 Transform:
   m_ObjectHideFlags: 0
@@ -789,10 +803,10 @@ MonoBehaviour:
   targetData: 1
   sampleResolution: 5
   sampleRange: {x: 0, y: 0}
-  audioAnalyzer: {fileID: 1167789059}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 1
   targets: {x: 0, y: 0, z: 0}
-  strength: {x: 0, y: 40, z: 0}
+  strength: {x: 0, y: 1, z: 0}
   targetTransform: 1
   defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 100}
@@ -1100,61 +1114,13 @@ MonoBehaviour:
   targetData: 1
   sampleResolution: 5
   sampleRange: {x: 0, y: 0}
-  audioAnalyzer: {fileID: 1167789059}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 0
   effect: {fileID: 982934231}
   parameterDrivers:
   - name: ParticleSpeed
     targetBand: 0
-    strength: 100
---- !u!1 &1167789057
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1167789058}
-  - component: {fileID: 1167789059}
-  m_Layer: 0
-  m_Name: Channels
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1167789058
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167789057}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 591051063}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1167789059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167789057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d67ac83b860fabd44b14edbf2a146040, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 591051062}
-  minimumSampleCount: 50
-  sampleCount: 8192
-  bandWidth: 8
+    strength: 2
 --- !u!1 &1230755592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1257,15 +1223,15 @@ MonoBehaviour:
   targetData: 1
   sampleResolution: 100
   sampleRange: {x: 0, y: 100}
-  audioAnalyzer: {fileID: 1167789059}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 1
   targets: {x: 1, y: 1, z: 1}
-  strength: {x: 40, y: 40, z: 40}
+  strength: {x: 0.5, y: 0.5, z: 0.5}
   targetTransform: 2
   defaultScale: {x: 5, y: 5, z: 5}
-  rangeX: {x: 0, y: 10}
-  rangeY: {x: 0, y: 10}
-  rangeZ: {x: 0, y: 10}
+  rangeX: {x: 0, y: 15}
+  rangeY: {x: 0, y: 15}
+  rangeZ: {x: 0, y: 15}
 --- !u!1 &1306228073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,10 +1454,10 @@ MonoBehaviour:
   targetData: 1
   sampleResolution: 5
   sampleRange: {x: 0, y: 0}
-  audioAnalyzer: {fileID: 1167789059}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 0
   targets: {x: 0, y: 0, z: 0}
-  strength: {x: 40, y: 40, z: 40}
+  strength: {x: 0.5, y: 0.5, z: 0.5}
   targetTransform: 2
   defaultScale: {x: 1.5, y: 1.5, z: 1.5}
   rangeX: {x: 0, y: 5}
@@ -1599,10 +1565,10 @@ MonoBehaviour:
   targetData: 1
   sampleResolution: 5
   sampleRange: {x: 0, y: 0}
-  audioAnalyzer: {fileID: 1167789059}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 2
   targets: {x: 0, y: 0, z: 0}
-  strength: {x: 40, y: 40, z: 40}
+  strength: {x: 0.5, y: 0.5, z: 0.5}
   targetTransform: 2
   defaultScale: {x: 2, y: 2, z: 2}
   rangeX: {x: 0, y: 5}
@@ -1710,96 +1676,15 @@ MonoBehaviour:
   targetData: 1
   sampleResolution: 5
   sampleRange: {x: 0, y: 0}
-  audioAnalyzer: {fileID: 1167789059}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 1
   targets: {x: 0, y: 0, z: 0}
-  strength: {x: 40, y: 40, z: 40}
+  strength: {x: 0.5, y: 0.5, z: 0.5}
   targetTransform: 2
   defaultScale: {x: 3, y: 3, z: 3}
   rangeX: {x: 0, y: 5}
   rangeY: {x: 0, y: 5}
   rangeZ: {x: 0, y: 5}
---- !u!1001 &1491095243
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 599da8256962d76449fb6c610d6e9df5, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 599da8256962d76449fb6c610d6e9df5, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 599da8256962d76449fb6c610d6e9df5, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 599da8256962d76449fb6c610d6e9df5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -200
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 599da8256962d76449fb6c610d6e9df5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 599da8256962d76449fb6c610d6e9df5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -200
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 599da8256962d76449fb6c610d6e9df5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 599da8256962d76449fb6c610d6e9df5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 599da8256962d76449fb6c610d6e9df5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 599da8256962d76449fb6c610d6e9df5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 599da8256962d76449fb6c610d6e9df5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 599da8256962d76449fb6c610d6e9df5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 599da8256962d76449fb6c610d6e9df5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 599da8256962d76449fb6c610d6e9df5, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 599da8256962d76449fb6c610d6e9df5, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 8bfdf7fbcdfcd334d9e618603bf5d6ab, type: 2}
-    - target: {fileID: 919132149155446097, guid: 599da8256962d76449fb6c610d6e9df5, type: 3}
-      propertyPath: m_Name
-      value: Plane_1M
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 599da8256962d76449fb6c610d6e9df5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 599da8256962d76449fb6c610d6e9df5, type: 3}
 --- !u!1 &1537873536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,10 +1718,10 @@ MonoBehaviour:
   targetData: 1
   sampleResolution: 5
   sampleRange: {x: 0, y: 0}
-  audioAnalyzer: {fileID: 1167789059}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 1
   targets: {x: 0, y: 0, z: 0}
-  strength: {x: 20, y: 20, z: 20}
+  strength: {x: 0.05, y: 0.1, z: 0.05}
   targetTransform: 1
   defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 20}
@@ -1855,16 +1740,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetData: 0
-  sampleResolution: 60
-  sampleRange: {x: 0, y: 400}
-  audioAnalyzer: {fileID: 1167789059}
+  sampleResolution: 1
+  sampleRange: {x: 0, y: 8192}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 2
   material: {fileID: 2100000, guid: 5289d9fbf93d2b444aecd5cf09e8c375, type: 2}
   shape: 3
-  graphObjectScale: {x: 0.2, y: 0.2, z: 0.2}
+  graphObjectScale: {x: 2, y: 0.4, z: 0.4}
   radius: 45
   maxHeight: 10
-  reactionStrength: 100
+  reactionStrength: 1
 --- !u!4 &1537873539
 Transform:
   m_ObjectHideFlags: 0
@@ -1929,10 +1814,10 @@ MonoBehaviour:
   targetData: 1
   sampleResolution: 5
   sampleRange: {x: 0, y: 0}
-  audioAnalyzer: {fileID: 1167789059}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 2
   targets: {x: 0, y: 0, z: 0}
-  strength: {x: 0, y: 40, z: 0}
+  strength: {x: 0, y: 1, z: 0}
   targetTransform: 1
   defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 100}
@@ -1985,16 +1870,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetData: 0
-  sampleResolution: 50
-  sampleRange: {x: 0, y: 500}
-  audioAnalyzer: {fileID: 1167789059}
+  sampleResolution: 2
+  sampleRange: {x: 0, y: 8192}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 2
   material: {fileID: 2100000, guid: b5432de3747bf514d884556323d7bcc6, type: 2}
   shape: 3
-  graphObjectScale: {x: 0.2, y: 0.2, z: 0.2}
+  graphObjectScale: {x: 0.7, y: 0.3, z: 0.3}
   radius: 17
   maxHeight: 10
-  reactionStrength: 100
+  reactionStrength: 1.5
 --- !u!114 &1657531141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2010,10 +1895,10 @@ MonoBehaviour:
   targetData: 1
   sampleResolution: 5
   sampleRange: {x: 0, y: 0}
-  audioAnalyzer: {fileID: 1167789059}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 2
   targets: {x: 0, y: 0, z: 0}
-  strength: {x: 20, y: 100, z: 20}
+  strength: {x: 0.25, y: 0.5, z: 0.25}
   targetTransform: 1
   defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 100}
@@ -2066,16 +1951,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetData: 0
-  sampleResolution: 50
-  sampleRange: {x: 0, y: 500}
-  audioAnalyzer: {fileID: 1167789059}
+  sampleResolution: 2
+  sampleRange: {x: 0, y: 8192}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 1
   material: {fileID: 2100000, guid: 3c58054aabe73b44dbc1db6c30e7eda4, type: 2}
   shape: 3
-  graphObjectScale: {x: 0.2, y: 0.2, z: 0.2}
+  graphObjectScale: {x: 0.4, y: 0.2, z: 0.2}
   radius: 10
   maxHeight: 10
-  reactionStrength: 100
+  reactionStrength: 1.5
 --- !u!114 &1759769144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2091,16 +1976,16 @@ MonoBehaviour:
   targetData: 1
   sampleResolution: 5
   sampleRange: {x: 0, y: 0}
-  audioAnalyzer: {fileID: 1167789059}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 1
   targets: {x: 0, y: 0, z: 0}
-  strength: {x: 20, y: 100, z: 20}
+  strength: {x: 0.25, y: 0.5, z: 0.25}
   targetTransform: 1
   defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 100}
   rangeY: {x: 0, y: 100}
   rangeZ: {x: 0, y: 100}
---- !u!1 &1846840274
+--- !u!1 &2031300169
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2108,23 +1993,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1846840277}
-  - component: {fileID: 1846840276}
-  - component: {fileID: 1846840275}
+  - component: {fileID: 2031300172}
+  - component: {fileID: 2031300171}
+  - component: {fileID: 2031300170}
   m_Layer: 0
   m_Name: Small_Cubes_B2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1846840275
+  m_IsActive: 1
+--- !u!114 &2031300170
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846840274}
+  m_GameObject: {fileID: 2031300169}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33bb0a746a2b0ca409848483f192c086, type: 3}
@@ -2133,53 +2018,53 @@ MonoBehaviour:
   targetData: 1
   sampleResolution: 5
   sampleRange: {x: 0, y: 0}
-  audioAnalyzer: {fileID: 1167789059}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 2
   targets: {x: 0, y: 0, z: 0}
-  strength: {x: 20, y: 20, z: 20}
+  strength: {x: 0.05, y: 0.1, z: 0.05}
   targetTransform: 1
   defaultScale: {x: 1, y: 1, z: 1}
   rangeX: {x: 0, y: 20}
   rangeY: {x: 0, y: 20}
   rangeZ: {x: 0, y: 20}
---- !u!114 &1846840276
+--- !u!114 &2031300171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846840274}
+  m_GameObject: {fileID: 2031300169}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 910c39c63ae03d24dad6a77ed3eaed95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetData: 0
-  sampleResolution: 60
-  sampleRange: {x: 0, y: 400}
-  audioAnalyzer: {fileID: 1167789059}
+  sampleResolution: 1
+  sampleRange: {x: 0, y: 8192}
+  audioAnalyzer: {fileID: 591051064}
   audioChannel: 2
   material: {fileID: 2100000, guid: 5289d9fbf93d2b444aecd5cf09e8c375, type: 2}
   shape: 3
-  graphObjectScale: {x: 0.2, y: 0.2, z: 0.2}
-  radius: 50
+  graphObjectScale: {x: 2, y: 0.4, z: 0.4}
+  radius: 45
   maxHeight: 10
-  reactionStrength: 100
---- !u!4 &1846840277
+  reactionStrength: 1
+--- !u!4 &2031300172
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846840274}
+  m_GameObject: {fileID: 2031300169}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.86602545, y: 0.0000024959445, z: 0.5, w: -0.000001475215}
+  m_LocalRotation: {x: 0.8660269, y: 0.0000014677713, z: -0.4999975, w: -0.0000024661383}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 120, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 240, z: 180}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2192,7 +2077,6 @@ SceneRoots:
   - {fileID: 1657531139}
   - {fileID: 696618857}
   - {fileID: 1537873539}
-  - {fileID: 1846840277}
+  - {fileID: 2031300172}
   - {fileID: 1230755596}
   - {fileID: 982934232}
-  - {fileID: 1491095243}

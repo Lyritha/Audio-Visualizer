@@ -22,6 +22,19 @@ MonoBehaviour:
   gain:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: 0}
+--- !u!114 &-8797163433954793130
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5504862fc1e3c164e9523e9ae7c14e1a, type: 3}
+  m_Name: EmptyVolumeComponent
+  m_EditorClassIdentifier: 
+  active: 1
 --- !u!114 &-8270506406425502121
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -314,7 +327,10 @@ MonoBehaviour:
   active: 1
   steps:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 8
+  colorSpace:
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &-1410297666881709256
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -502,6 +518,8 @@ MonoBehaviour:
   - {fileID: -1410297666881709256}
   - {fileID: -1854656792699996434}
   - {fileID: -791389978833604151}
+  - {fileID: 1163507929096348227}
+  - {fileID: -8797163433954793130}
 --- !u!114 &853819529557874667
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -603,6 +621,22 @@ MonoBehaviour:
   highlightsEnd:
     m_OverrideState: 1
     m_Value: 1
+--- !u!114 &1163507929096348227
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce329328e3283274b8c2ca5f1d2176d9, type: 3}
+  m_Name: PixelateVolumeComponent
+  m_EditorClassIdentifier: 
+  active: 1
+  pixelSize:
+    m_OverrideState: 1
+    m_Value: 5
 --- !u!114 &1666464333004379222
 MonoBehaviour:
   m_ObjectHideFlags: 3
