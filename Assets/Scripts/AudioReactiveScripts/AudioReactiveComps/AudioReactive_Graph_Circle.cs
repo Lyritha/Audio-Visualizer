@@ -6,6 +6,8 @@ public class AudioReactive_Graph_Circle : AudioReactiveComponent
     [Header("Visuals")]
     [SerializeField] private Material material;
     [SerializeField] private PrimitiveType shape;
+    [SerializeField] private bool customShapeBool;
+    [SerializeField] private GameObject customShape;
 
     [Header("Reactive Parameters")]
     [SerializeField] private Vector3 graphObjectScale = Vector3.one;
@@ -71,11 +73,12 @@ public class AudioReactive_Graph_Circle : AudioReactiveComponent
     private GameObject CreateObject(int index, Vector3 pos, Quaternion rot)
     {
         // create primitive cube
-        GameObject obj = GameObject.CreatePrimitive(shape);
+        GameObject obj = customShapeBool ? Instantiate(customShape) : GameObject.CreatePrimitive(shape);
 
         // set transform information
         obj.transform.SetPositionAndRotation(pos, rot);
         obj.transform.parent = transform;
+        obj.layer = gameObject.layer;
 
         // assign the material
         obj.GetComponent<Renderer>().material = material;

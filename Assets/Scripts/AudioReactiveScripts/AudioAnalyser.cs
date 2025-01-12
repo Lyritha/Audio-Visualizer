@@ -34,6 +34,7 @@ public class AudioAnalyser : MonoBehaviour
     [SerializeField, Range(2, 16)] private int bandWidth = 8;
 
     [SerializeField] private float delayTimer = 0;
+    [SerializeField] private Lyrics lyrics;
 
     public int SampleCount => sampleCount; // Public getter
     public int BandWidth => bandWidth;     // Public getter
@@ -67,6 +68,7 @@ public class AudioAnalyser : MonoBehaviour
         yield return new WaitForSeconds(delayTimer);
 
         sourceAudio.Play();
+        lyrics.StartLyrics();
 
         yield return null;
     }
